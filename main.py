@@ -33,14 +33,15 @@ def square(a):
 #
 # print(arithmetic(a, b, s))
 
-while True:
-    try:
-        a = int(input())
-        break
-    except ValueError:
-        print("type error")
+# while True:
+#     try:
+#         a = int(input())
+#         break
+#     except ValueError:
+#         print("type error")
+#
+# print(square(a))
 
-print(square(a))
 
 def season(a):
     if 2 <= a <= 4:
@@ -48,8 +49,9 @@ def season(a):
     elif 5 <= a <= 7:
         return "summer"
     elif 8 <= a <= 10:
-        return "autmn"
+        return "autumn"
     else:
         return "winter"
 
-    print(season(1))
+
+print(season(1))
