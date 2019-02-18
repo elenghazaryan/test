@@ -41,3 +41,15 @@ while True:
         print("type error")
 
 print(square(a))
+
+def season(a):
+    if 2 <= a <= 4:
+        return "spring"
+    elif 5 <= a <= 7:
+        return "summer"
+    elif 8 <= a <= 10:
+        return "autmn"
+    else:
+        return "winter"
+
+    print(season(1))
