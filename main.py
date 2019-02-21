@@ -1,4 +1,5 @@
 import helpers
+import sympy
 
 
 def input_integers(number):
@@ -15,7 +16,14 @@ def input_integers(number):
     return l
 
 
-a, b = input_integers(2)
-s = input("input operation")
-print(helpers.arithmetic(a, b, s))
+# print(helpers.is_prime(3))
+
+import time
+
+start_time = time.clock()
+for i in range(2, 1000000):
+    sympy.isprime(i)
+end_time = time.clock()
+
+print(end_time - start_time)
 
