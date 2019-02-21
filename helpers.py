@@ -54,3 +54,35 @@ def is_prime(a):
             return False
     return True
 
+
+def is_leap(year):
+    if year % 4 == 0 and (year % 100 != 0 or year % 400 == 0):
+        return True
+    else:
+        return False
+
+
+def date_is_valid(day, month, year):
+    max_month = 31
+    if month in [4, 6, 9, 11]:
+        max_month = 30
+    elif month == 2:
+        if is_leap(year):
+            max_month = 29
+        else:
+            max_month = 28
+    if 1 <= day <= max_month:
+        return True
+    else:
+        return False
+
+
+def xor_cipher(text, key):
+    encrypted_symbols = []
+    for i in text:
+        encrypted_symbols.append(chr(ord(i) ^ key))
+    return ''.join(encrypted_symbols)
+
+
+def xor_uncipher(text, key):
+    return xor_cipher(text, key)
