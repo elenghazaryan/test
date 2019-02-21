@@ -1,4 +1,5 @@
 import math
+import random
 
 
 def arithmetic(a, b, s):
@@ -86,3 +87,9 @@ def xor_cipher(text, key):
 
 def xor_uncipher(text, key):
     return xor_cipher(text, key)
+
+
+def rand(n):
+    number = random.randint(-10, n)
+    return number
+

@@ -1,5 +1,6 @@
 import helpers
 import sympy
+import random
 
 
 def input_integers(number):
@@ -27,6 +28,8 @@ def input_integers(number):
 #
 # print(end_time - start_time)
 
+#
+# encrypted_message = helpers.xor_cipher('hello python', 1315)
+# print(helpers.xor_cipher(encrypted_message, 1314))
 
-encrypted_message = helpers.xor_cipher('hello python', 1315)
-print(helpers.xor_cipher(encrypted_message, 1314))
+print(helpers.rand(10))
