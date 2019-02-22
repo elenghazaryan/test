@@ -93,3 +93,6 @@ def rand(n):
     number = random.randint(-10, n)
     return number
 
+
+if __name__ == '__main__':
+    print('i am main')
