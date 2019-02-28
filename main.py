@@ -1,4 +1,4 @@
-# import helpers
+import helpers
 import sympy
 import random
 # import mypackage
@@ -34,3 +34,7 @@ def input_integers(number):
 # print(helpers.xor_cipher(encrypted_message, 1314))
 
 # print(helpers.rand(10))
+#
+# print(helpers.summator([1, 2, 3]))
+
+print(helpers.in_circle(1, 1))

@@ -94,5 +94,88 @@ def rand(n):
     return number
 
 
-if __name__ == '__main__':
-    print('i am main')
+# if __name__ == '__main__':
+#     print('i am main')
+
+def get_multiplier():
+    def inner(a, b):
+        return a * b
+
+    return inner
+
+
+# multiplier = get_multiplier()
+# print(multiplier(10, 11))
+# print(str(multiplier))
+
+
+def logger(func):
+    def wrapped(num_list):
+        result = func(num_list)
+        with open('log.txt', 'w') as f:
+            f.write(str(result))
+
+        return result
+    return wrapped
+
+
+@logger
+def summator(num_list):
+    return sum(num_list)
+
+# with open('log.txt', 'r') as f:
+#     print('log.txt: {}'.format(f.read()))
+
+
+# x = input("input x=")
+# y = input("input y=")
+# r = input("input r=")
+
+
+def in_circle(x0, y0, r, x, y):
+    if ((x - x0) ** 2 + (y - y0) ** 2) ** 0.5 == r:
+        return True
+    else:
+        return False
+
+
+class Circle():
+    def __init__(self, x0, y0, r):
+        self.__x0 = x0
+        self.__y0 = y0
+        if r <= 0:
+            raise ValueError("invalid radius value")
+        self.__r = r
+
+    def on_circle(self, x, y):
+        if ((x - self.__x0) ** 2 + (y - self.__y0) ** 2) ** 0.5 == self.__r:
+            return True
+        return False
+
+    def get_radius(self):
+        return self.__r
+
+    def __repr__(self):
+        return "x: {} \ny: {} \nradius: {}\n".format(self.__x0, self.__y0, self.__r)
+
+    def in_circle(self, x, y):
+        if ((x - self.__x0) ** 2 + (y - self.__y0) ** 2) ** 0.5 < self.__r:
+            return 'your point is in circle'
+        return 'your point is out of circle'
+
+    def area(self, __r):
+        s = math.pi * self.__r ** 2
+        return s
+
+    def length(self, __r):
+        erk = 2 * math.pi * self.__r
+        return erk
+
+
+
+c = Circle(1, 1, 3)
+print(c.length(3))
+
+
+
+
