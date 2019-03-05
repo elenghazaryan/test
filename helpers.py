@@ -140,6 +140,8 @@ def in_circle(x0, y0, r, x, y):
 
 
 class Circle():
+    s = None
+
     def __init__(self, x0, y0, r):
         self.__x0 = x0
         self.__y0 = y0
@@ -160,22 +162,18 @@ class Circle():
 
     def in_circle(self, x, y):
         if ((x - self.__x0) ** 2 + (y - self.__y0) ** 2) ** 0.5 < self.__r:
-            return 'your point is in circle'
-        return 'your point is out of circle'
+            return True
+        return False
 
     def area(self, __r):
-        s = math.pi * self.__r ** 2
-        return s
+        if self.s:
+            return self.s
+        self.s = math.pi * self.__r ** 2
+        return self.s
 
     def length(self, __r):
         erk = 2 * math.pi * self.__r
         return erk
 
-
-
-c = Circle(1, 1, 3)
-print(c.length(3))
-
-
-
-
+# c = Circle(1, 1, 3)
+# print(c.area(3))
