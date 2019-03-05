@@ -35,11 +35,15 @@ class Matrix():
         return m
 
     def __mul__(self, other):
+        if not isinstance(other, Matrix):
+            raise ValueError('second matrix is not Matrix instance')
+        if not (self.col_size == other.row_size):
+            raise ValueError('Can\'t multiply matrix\'s')
         for k in self.elements:
             gum = 0
             for i in self.elements:
                 for j in self.elements[0]:
-                    gum = gum + other.f[j][i] * self.elements[i][j]
+                    gum = gum + other.elements[j][i] * self.elements[i][j]
                 self.elements[k][i] = gum
         return Matrix(self.elements)
 
@@ -75,6 +79,6 @@ if __name__ == '__main__':
     n = Matrix([[0, 2, 0], [1, 4, 3], [6, 4, 0]])
     f = Matrix([[0, 2, 4], [1, 4, 1], [6, 2, 1]])
 
-    r = n + f
+    r = n * f
     print(r)
 
