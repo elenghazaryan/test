@@ -1,6 +1,8 @@
 import math
 import random
 
+from sympy.strategies.core import switch
+
 
 def arithmetic(a, b, s):
     if s == '+':
@@ -177,3 +179,83 @@ class Circle():
 
 # c = Circle(1, 1, 3)
 # print(c.area(3))
+
+
+def return_the_reverse(num):
+    n = 0
+    while num > 0:
+        a = num % 10
+        num = num // 10
+        n *= 10
+        n += a
+    return n
+
+
+#print(return_the_reverse(int(input("input integer: "))))
+#degree(10, 2)
+#print(syracuse_hypotheses(int(input("input an integer"))))
+
+
+def degree(num, deg): #minchev num-y exac tveri deg astichannery
+    i = 1
+    while i ** deg <= num:
+        print(i ** deg, end=' ')
+        i += 1
+
+
+def syracuse_hypotheses(num):
+    while num != 1:
+        if num % 2 == 0:
+            num = num // 2
+        else:
+            num = (3 * num + 1) // 2
+        print(num, end=' ')
+    return num
+
+
+def range_probability(d):
+    rand_value = random.random()
+    f = 0
+    for i in d.keys():
+        f += d[i] / 100
+        if rand_value < f:
+            return i
+
+
+def count():
+    d = {}
+    for i in range(1000000):
+        range_value = range_probability({'one': 20, 'two': 10, 'three': 40, 'four': 30})
+        d[range_value] = d.get(range_value, 0) + 1
+    print(d)
+
+
+# if __name__ == '__main__':
+#     count()
+
+
+def return_one_or_two(a):
+    return 3-a
+
+
+#print(return_one_or_two(1))
+
+
+def vers1(n):
+    return (3 * (n % 2)) + (n - 1) % 2 + n - 2
+
+
+def vers2(n):
+    return n - (n + 1) % 2 + n % 2
+
+
+def vers3(n):
+    return n - (-(n % 2)) ** (n % 2)
+
+
+print(func3(12))
+
+
+
+
+

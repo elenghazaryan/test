@@ -1,4 +1,5 @@
 from copy import  deepcopy
+import numpy as np
 
 
 class Matrix():
@@ -39,25 +40,29 @@ class Matrix():
             raise ValueError('second matrix is not Matrix instance')
         if not (self.col_size == other.row_size):
             raise ValueError('Can\'t multiply matrix\'s')
-        for k in self.elements:
+        p = Matrix([])
+        for k, _ in enumerate(self.elements):
             gum = 0
-            for i in self.elements:
-                for j in self.elements[0]:
-                    gum = gum + other.elements[j][i] * self.elements[i][j]
-                self.elements[k][i] = gum
-        return Matrix(self.elements)
+            p.elements.append([])
+            for i, ___ in enumerate(self.elements):
+                for j, __ in enumerate(self.elements[i]):
+                    gum = gum + self.elements[k][j] * other.elements[j][i]
+                p.elements[k].append(gum)
+        return p
 
     def trans(self):
-        for i in self.elements:
-            for j in self.elements[0]:
-                p = self.elements[i][j]
+        for i in enumerate(self.elements):
+            for j in enumerate(self.elements[i]):
+                k = self.elements[i][j]
                 self.elements[i][j] = self.elements[j][i]
-                self.elements[j][i] = p
+                self.elements[j][i] = k
         return Matrix(self.elements)
 
-    def det(self):
-        determinant = self.elements[0][0] * self.elements[1][1] * self.elements[2][2] + self.elements[1][0] * self.elements[2][1] * self.elements[0][2] + self.elements[0][1] * self.elements[1][2] * self.elements[2][0]
-        return determinant
+    def determinant(self):
+        # determinant = self.elements[0][0] * self.elements[1][1] * self.elements[2][2] + self.elements[1][0] * self.elements[2][1] * self.elements[0][2] + self.elements[0][1] * self.elements[1][2] * self.elements[2][0]
+        # return determinant
+        det = np.linalg.det(self.elements)
+        return det
 
     def __str__(self):
         matrix_string = ''
@@ -76,9 +81,9 @@ class Matrix():
 if __name__ == '__main__':
     m = Matrix([])
 
-    n = Matrix([[0, 2, 0], [1, 4, 3], [6, 4, 0]])
-    f = Matrix([[0, 2, 4], [1, 4, 1], [6, 2, 1]])
+    n = Matrix([[1, 1, 0], [5, 1, 0], [0, 1, 1]])
+    f = Matrix([[0, 2, 0], [0, 2, 0], [0, 2, 0]])
+    # r = n * f
+    # print(r)
 
-    r = n * f
-    print(r)
-
+    print(n.determinant())

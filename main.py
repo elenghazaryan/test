@@ -37,4 +37,4 @@ def input_integers(number):
 #
 # print(helpers.summator([1, 2, 3]))
 
-print(helpers.in_circle(1, 1))
+helpers.in_circle(1, 1)
